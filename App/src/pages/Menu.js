@@ -76,7 +76,7 @@ export default class Menu extends Component {
       case 'dashboard':
         return (
             <Container>
-                <Tabs initialPage={1} >
+                <Tabs initialPage={0} >
                     <Tab heading="LOST">
                         <Lost />
                     </Tab>

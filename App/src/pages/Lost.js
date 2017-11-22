@@ -15,10 +15,21 @@ import {
 import {
   StyleSheet,
   View,
-  Image
+  Image,
+  Modal,
+  TouchableHighlight
 } from 'react-native';
 var axios = require('axios');
 export default class Found extends Component {
+
+  state = {
+    modalVisible: false,
+  }
+
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
+
   render() {
     return (
       <Container>
@@ -33,38 +44,6 @@ export default class Found extends Component {
           </Button>
         </Header>
         <Content style={styles.content}>
-          <Card>
-            <CardItem>
-              <Body>
-                <Text>
-                   Kehilangan A
-                </Text>
-                <Button iconLeft dark onPress={() => {
-                  axios.post('https://api.mainapi.net/smsnotification/1.0.0/messages', {
-                    'msisdn': '08563568919',
-                    'content': 'User A menemukan A'
-                  },{
-                    headers:
-                    {
-                      'Accept' : 'application/json',
-                      'Content-Type' : 'application/x-www-form-urlencoded',
-                      'Authorization' : 'Bearer 22fa579134970c39e2910c69b03cb7bd'
-                    }
-                  })
-                  .then(function (response) {
-                    console.log(response);
-                  })
-                  .catch(function (error) {
-                    console.log(error);
-                  });
-                }}>
-                  <Icon name='cog' />
-                  <Text>Claim Ketemu</Text>
-                </Button>
-              </Body>
-            </CardItem>
-          </Card>     
-
           <Card flexDirection='row'>
             <View style={{flex: 1}}>
               <Image
@@ -78,12 +57,82 @@ export default class Found extends Component {
               <Text style={styles.textDescryption}>
                 Kehilangan STNK atas nama namaku dengan nomor id 09876543212345678
               </Text>
-              <Text style={styles.textDetails}>
-                Detail
-              </Text>
+              <TouchableHighlight onPress={() => {
+                  this.setModalVisible(!this.state.modalVisible)
+                }}>
+                <Text style={styles.textDetails}>
+                  Detail
+                </Text>
+              </TouchableHighlight>
             </View>
           </Card>
-          
+
+          <View style={{marginTop: 22}}>
+            <Modal
+              animationType="fade"
+              transparent={false}
+              visible={this.state.modalVisible}
+              onRequestClose={() => {
+                this.setModalVisible(!this.state.modalVisible)}}
+              transparent
+              >
+              <View style={{
+                marginTop: 22,
+                flex: 1,
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: 'transparent'
+                }}>
+                <View style={{
+                  width: 350,
+                  height: 380,
+                  backgroundColor: 'white', 
+                  padding: 20,
+                  borderWidth: 5, 
+                  borderColor: '#33abf9',
+                  }}>
+                  <View style={{height: 200}}>
+                    <Text>Lorem Ipsum</Text>
+
+                    <TouchableHighlight onPress={() => {
+                      this.setModalVisible(!this.state.modalVisible)
+                    }}>
+                      <Text>Hide Modal</Text>
+                    </TouchableHighlight>
+                  </View>
+                  <Button full dark style={{margin : 10,borderRadius: 25}} onPress={() => {
+                    axios.post('https://api.mainapi.net/smsnotification/1.0.0/messages', {
+                      msisdn: '08563568919',
+                      content: 'User A menemukan Dompet'
+                    },{
+                      headers:
+                      {
+                        Accept : 'application/json',
+                        Authorization : 'Bearer 2ec2783649188bf7da12f0c9c9c4a5f8'
+                      }
+                    })
+                    .then(function (response) {
+                      console.log(response);
+                    })
+                    .catch(function (error) {
+                      console.log(error);
+                    });
+                  }}>
+                    <Text>Claim Ketemu</Text>
+                  </Button>
+                  <Button 
+                    full 
+                    info 
+                    style={{margin : 10, borderRadius: 25}} 
+                    onPress={() => {
+                      this.setModalVisible(!this.state.modalVisible)}}>
+                    <Text>Exit</Text>
+                  </Button>
+                </View>  
+              </View>
+            </Modal>
+          </View>         
         </Content>
       </Container>
     );
