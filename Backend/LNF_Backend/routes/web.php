@@ -21,6 +21,7 @@ $router->get('/key',function(){
 
 $router->post('/login' , 'API\UserController@login');
 $router->post('/register', 'API\UserController@register');
+$router->get('/user/{id}', ['middleware' => 'auth', 'uses' =>  'UserController@get_user']);
 /////////////////////////////////////////////////////////////////////
 /* Lost Route */
 $router->get('/lost', 'API\LostController@index');
