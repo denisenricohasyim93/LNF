@@ -76,59 +76,44 @@ export default class Found extends Component {
                 this.setModalVisible(!this.state.modalVisible)}}
               transparent
               >
-              <View style={{
-                marginTop: 22,
-                flex: 1,
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: 'transparent'
-                }}>
-                <View style={{
-                  width: 350,
-                  height: 380,
-                  backgroundColor: 'white', 
-                  padding: 20,
-                  borderWidth: 5, 
-                  borderColor: '#33abf9',
-                  }}>
-                  <View style={{height: 200}}>
-                    <Text>Lorem Ipsum</Text>
-
-                    <TouchableHighlight onPress={() => {
-                      this.setModalVisible(!this.state.modalVisible)
-                    }}>
-                      <Text>Hide Modal</Text>
-                    </TouchableHighlight>
+              <View style={styles.mainModal}>
+                <View style={styles.secondaryModal}>
+                  <View style={styles.bodyModal}>
+                    <Text style={styles.textTitle}>Berikut adalah detail dari item yang anda pilih :</Text>
+                    <Text style={styles.textDescryption}>Nama Barang : </Text>
+                    <Text style={styles.textDescryption}>Deskripsi Barang : </Text>
+                    <Text style={styles.textDescryption}>Lokasi Penemuan : </Text>
+                    <Text style={styles.textDescryption}>Tanggal penemuan : </Text>
+                    <Text style={styles.textDescryption}>Jam Penemuan : </Text>
+                    <Text style={styles.textDescryption}>Identitas Penemu : </Text>
                   </View>
-                  <Button full dark style={{margin : 10,borderRadius: 25}} onPress={() => {
-                    axios.post('https://api.mainapi.net/smsnotification/1.0.0/messages', {
-                      msisdn: '08563568919',
-                      content: 'User A menemukan Dompet'
-                    },{
-                      headers:
-                      {
-                        Accept : 'application/json',
-                        Authorization : 'Bearer 2ec2783649188bf7da12f0c9c9c4a5f8'
-                      }
-                    })
-                    .then(function (response) {
-                      console.log(response);
-                    })
-                    .catch(function (error) {
-                      console.log(error);
-                    });
-                  }}>
-                    <Text>Claim Ketemu</Text>
-                  </Button>
-                  <Button 
-                    full 
-                    info 
-                    style={{margin : 10, borderRadius: 25}} 
-                    onPress={() => {
-                      this.setModalVisible(!this.state.modalVisible)}}>
-                    <Text>Exit</Text>
-                  </Button>
+                  <View style={styles.buttonRow}>
+                    <Button style={styles.buttonClaim} onPress={() => {
+                      axios.post('https://api.mainapi.net/smsnotification/1.0.0/messages', {
+                        msisdn: '08563568919',
+                        content: 'User A menemukan Dompet'
+                      },{
+                        headers:
+                        {
+                          Accept : 'application/json',
+                          Authorization : 'Bearer 2ec2783649188bf7da12f0c9c9c4a5f8'
+                        }
+                      })
+                      .then(function (response) {
+                        console.log(response);
+                      })
+                      .catch(function (error) {
+                        console.log(error);
+                      });
+                    }}>
+                      <Text uppercase={false}>Klaim Ketemu</Text>
+                    </Button>
+                    <Button style={styles.buttonExit} 
+                      onPress={() => {
+                        this.setModalVisible(!this.state.modalVisible)}}>
+                      <Text uppercase={false}>Keluar</Text>
+                    </Button>
+                  </View>
                 </View>  
               </View>
             </Modal>
@@ -170,5 +155,46 @@ const styles = StyleSheet.create({
     marginRight:10,
     fontSize:12,
     fontWeight: 'bold'
+  },
+  mainModal: {
+    marginTop: 22,
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'transparent'
+  },
+  secondaryModal: {
+    width: 350,
+    height: 300,
+    backgroundColor: 'white', 
+    padding: 20,
+    borderWidth: 2, 
+    borderColor: '#33abf9',
+  },
+  bodyModal: {
+    height: 200,
+  },
+  buttonClaim: {
+    height:30,
+    margin : 5,
+    borderRadius: 20,
+    backgroundColor:'#33abf9',
+    marginVertical: 10,
+    paddingVertical: 13
+  },
+  buttonExit: {
+    height:30,
+    margin : 5,
+    borderRadius: 20,
+    backgroundColor:'#33abf9',
+    marginVertical: 10,
+    paddingVertical: 13
+  },
+  buttonRow: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20
   }
 });
