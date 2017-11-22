@@ -61,6 +61,8 @@ import {Actions} from 'react-native-router-flux';
 import History from './History';
 import Profile from './Profile';
 import Contact from './Contact';
+import Help from './Help';
+import About from './About';
 import Lost from './Lost';
 import Found from './Found';
 
@@ -97,9 +99,14 @@ export default class Menu extends Component {
           <Profile/>
         );
         break;
-      case 'contact':
+      case 'about':
         return (
-          <Contact/>
+          <About/>
+        );
+        break;
+      case 'help':
+        return (
+          <Help/>
         );
         break;
       default:
@@ -114,7 +121,7 @@ export default class Menu extends Component {
           {this.renderSelectedTab()}
         </Content>
         <Footer>
-          <FooterTab>
+          <FooterTab >
             <Button active={this.state.selectedTab==='dashboard'} 
                 onPress={() => this.setState({selectedTab: 'dashboard'})} >
                 <Text>dashboard</Text>
@@ -127,9 +134,13 @@ export default class Menu extends Component {
                 onPress={() => this.setState({selectedTab: 'profile'})} >
                 <Text>profile</Text>
             </Button>
-            <Button active={this.state.selectedTab==='contact'} 
-                onPress={() => this.setState({selectedTab: 'contact'})} >
-                <Text>contact</Text>
+            <Button active={this.state.selectedTab==='about'} 
+                onPress={() => this.setState({selectedTab: 'about'})} >
+                <Text>about</Text>
+            </Button>
+            <Button active={this.state.selectedTab==='help'} 
+                onPress={() => this.setState({selectedTab: 'help'})} >
+                <Text>help</Text>
             </Button>
           </FooterTab>
         </Footer>
@@ -140,13 +151,13 @@ export default class Menu extends Component {
 
 const styles = StyleSheet.create({
     container : {
-      backgroundColor:'#455a64',
+      backgroundColor:'#33abf9',
       flex: 1,
       alignItems:'center',
       justifyContent :'center'
     },
     signupTextCont : {
-        flexGrow: 1,
+      flexGrow: 1,
       alignItems:'flex-end',
       justifyContent :'center',
       paddingVertical:16,
