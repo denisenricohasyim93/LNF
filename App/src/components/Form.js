@@ -17,7 +17,7 @@ export default class Form extends Component<{}> {
           <TextInput style={styles.inputBox} 
               underlineColorAndroid='rgba(0,0,0,0)' 
               placeholder="Email"
-              placeholderTextColor = "#ffffff"
+              placeholderTextColor = "#33abf9"
               selectionColor="#fff"
               keyboardType="email-address"
               onSubmitEditing={()=> this.password.focus()}
@@ -26,7 +26,7 @@ export default class Form extends Component<{}> {
               underlineColorAndroid='rgba(0,0,0,0)' 
               placeholder="Password"
               secureTextEntry={true}
-              placeholderTextColor = "#ffffff"
+              placeholderTextColor = "#33abf9"
               ref={(input) => this.password = input}
               />
             {this.props.type === 'Login' ? (
@@ -56,16 +56,18 @@ const styles = StyleSheet.create({
 
   inputBox: {
     width:300,
-    backgroundColor:'rgba(255, 255,255,0.2)',
+    backgroundColor:'#ffffff',
     borderRadius: 25,
+    borderWidth: 2,
+    borderColor: '#33abf9',
     paddingHorizontal:16,
     fontSize:16,
-    color:'#ffffff',
+    color:'#33abf9',
     marginVertical: 10
   },
   button: {
     width:300,
-    backgroundColor:'#1c313a',
+    backgroundColor:'#33abf9',
      borderRadius: 25,
       marginVertical: 10,
       paddingVertical: 13
