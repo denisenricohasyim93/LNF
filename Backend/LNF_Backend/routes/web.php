@@ -21,3 +21,7 @@ $router->get('/key',function(){
 
 $router->post('/login' , 'API\UserController@login');
 $router->post('/register', 'API\UserController@register');
+/////////////////////////////////////////////////////////////////////
+/* Lost Route */
+$router->get('/lost', 'API\LostController@index');
+$router->get('/show-lost/{id}', 'API\LostController@show');
