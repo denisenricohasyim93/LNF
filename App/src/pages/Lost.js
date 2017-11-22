@@ -20,7 +20,7 @@ import {
   TouchableHighlight
 } from 'react-native';
 var axios = require('axios');
-export default class Found extends Component {
+export default class Lost extends Component {
 
   state = {
     modalVisible: false,
@@ -67,6 +67,29 @@ export default class Found extends Component {
             </View>
           </Card>
 
+          <Card flexDirection='row'>
+            <View style={{flex: 1}}>
+              <Image
+                style={styles.imageItem}
+                source={{uri: 'https://i.imgur.com/S2oslJ4.jpg'}} />
+            </View>
+            <View style={{flex: 3, flexDirection: 'column'}}>
+              <Text style={styles.textTitle}>
+                Kehilangan SIM
+              </Text>
+              <Text style={styles.textDescryption}>
+                Kehilangan SIM atas nama namaku dengan nomor id 09876543212345678
+              </Text>
+              <TouchableHighlight onPress={() => {
+                  this.setModalVisible(!this.state.modalVisible)
+                }}>
+                <Text style={styles.textDetails}>
+                  Detail
+                </Text>
+              </TouchableHighlight>
+            </View>
+          </Card>
+
           <View style={{marginTop: 22}}>
             <Modal
               animationType="fade"
@@ -85,7 +108,7 @@ export default class Found extends Component {
                     <Text style={styles.textDescryptionModal}>Lokasi Penemuan : Berikut adalah detail dari item yang anda pilih</Text>
                     <Text style={styles.textDescryptionModal}>Tanggal penemuan : 12121112</Text>
                     <Text style={styles.textDescryptionModal}>Jam Penemuan : 222222</Text>
-                    <Text style={styles.textDescryptionModal}>Identitas Penemu : 1212121212</Text>
+                    <Text style={styles.textDescryptionModal}>Identitas Pemilik : 1212121212</Text>
                     <Image
                       style={styles.imageItemModal}
                       source={{uri: 'https://i.imgur.com/S2oslJ4.jpg'}} />
@@ -114,7 +137,7 @@ export default class Found extends Component {
                     <Button style={styles.buttonExit} 
                       onPress={() => {
                         this.setModalVisible(!this.state.modalVisible)}}>
-                      <Text uppercase={false}>Keluar</Text>
+                      <Text uppercase={false}>Tutup</Text>
                     </Button>
                   </View>
                 </View>  
