@@ -32,7 +32,7 @@ export default class Found extends Component {
             <Text>Search</Text>
           </Button>
         </Header>
-        <Content>
+        <Content style={styles.content}>
           <Card>
             <CardItem>
               <Body>
@@ -78,8 +78,8 @@ export default class Found extends Component {
               <Text style={styles.textDescryption}>
                 Kehilangan STNK atas nama namaku dengan nomor id 09876543212345678
               </Text>
-              <Text style={styles.textTitle}>
-                Kehilangan STNK
+              <Text style={styles.textDetails}>
+                Detail
               </Text>
             </View>
           </Card>
@@ -91,6 +91,9 @@ export default class Found extends Component {
 }
 
 const styles = StyleSheet.create({
+  content:{
+    margin:10
+  },
   card: {
     backgroundColor:'#ffffff',
     margin: 30
@@ -104,11 +107,19 @@ const styles = StyleSheet.create({
     fontWeight: 'bold', 
     marginBottom: 5,
     fontFamily:'Arial',
-    color:'#202021'
+    color:'#202021',
+    marginTop:10
   },
   textDescryption: {
     fontSize: 10,
     fontFamily:'Arial',
     color:'#767677'
+  },
+  textDetails: {
+    textAlign: 'right',
+    color:'#33abf9',
+    marginRight:10,
+    fontSize:12,
+    fontWeight: 'bold'
   }
 });
