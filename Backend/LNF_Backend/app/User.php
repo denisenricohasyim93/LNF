@@ -19,7 +19,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $fillable = [
-        'fullname', 'username', 'password', 'email', 'no_telp', 'address', 'image'
+        'fullname', 'username', 'password', 'email', 'no_telp', 'address', 'image',  'remember_token',
     ];
 
     /**
@@ -30,4 +30,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    public function losts(){
+        return $this->hasMany('App\Lost');
+    }
 }

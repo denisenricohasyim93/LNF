@@ -55,6 +55,7 @@ class UserController extends Controller
             'username' => 'required',
             'password' => 'required',
             'c_password' => 'required|same:password',
+            'no_telp' => 'required',
         ]);
 
         if ($validator->fails()) {
