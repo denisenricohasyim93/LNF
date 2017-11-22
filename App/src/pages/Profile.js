@@ -5,11 +5,11 @@ import {
   View,
   StatusBar ,
   TouchableOpacity,
-  Image
+  Button
 } from 'react-native';
 
 import Logo from '../components/Logo';
-import FormSetting from '../components/FormSetting';
+import Form from '../components/FormProfile';
 
 import {Actions} from 'react-native-router-flux';
 
@@ -22,10 +22,8 @@ export default class Profile extends Component<{}> {
 	render() {
 		return(
 			<View style={styles.container}>
-        <View style={{height: 50}}/>
-				<Image  style={{width:100, height: 100}}
-          			source={require('../images/usericon.png')}/>
-				<FormSetting type="Setting"/>
+				<Logo/>
+				<Form type="Login"/>
 			</View>	
 			)
 	}
@@ -33,11 +31,10 @@ export default class Profile extends Component<{}> {
 
 const styles = StyleSheet.create({
   container : {
-    backgroundColor:'#33abf9',
     flex: 1,
     alignItems:'center',
     justifyContent :'center',
-    height: 600
+    paddingBottom:20
   },
   signupTextCont : {
   	flexGrow: 1,
@@ -54,5 +51,13 @@ const styles = StyleSheet.create({
   	color:'#ffffff',
   	fontSize:16,
   	fontWeight:'500'
-  }
+  },
+  buttonChange: {
+    height:30,
+    margin : 5,
+    borderRadius: 20,
+    backgroundColor:'#33abf9',
+    marginVertical: 10,
+    paddingVertical: 13,
+  },
 });
