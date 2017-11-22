@@ -79,10 +79,10 @@ export default class Menu extends Component {
         return (
             <Container>
                 <Tabs initialPage={0} >
-                    <Tab heading="LOST">
+                    <Tab tabFontSize="10" heading="Lost">
                         <Lost />
                     </Tab>
-                    <Tab heading="FOUND">
+                    <Tab heading="Found">
                         <Found />
                     </Tab>
                 </Tabs>
@@ -124,23 +124,23 @@ export default class Menu extends Component {
           <FooterTab >
             <Button active={this.state.selectedTab==='dashboard'} 
                 onPress={() => this.setState({selectedTab: 'dashboard'})} >
-                <Text>dashboard</Text>
+                <Text uppercase={false}>Dashboard</Text>
             </Button>
             <Button active={this.state.selectedTab==='history'} 
                 onPress={() => this.setState({selectedTab: 'history'})} >
-                <Text>history</Text>
+                <Text uppercase={false}>History</Text>
             </Button>
             <Button active={this.state.selectedTab==='profile'} 
                 onPress={() => this.setState({selectedTab: 'profile'})} >
-                <Text>profile</Text>
+                <Text uppercase={false}>Profile</Text>
             </Button>
-            <Button active={this.state.selectedTab==='about'} 
+            {/* <Button active={this.state.selectedTab==='about'} 
                 onPress={() => this.setState({selectedTab: 'about'})} >
                 <Text>about</Text>
-            </Button>
+            </Button> */}
             <Button active={this.state.selectedTab==='help'} 
                 onPress={() => this.setState({selectedTab: 'help'})} >
-                <Text>help</Text>
+                <Text uppercase={false}>Help</Text>
             </Button>
           </FooterTab>
         </Footer>
@@ -171,5 +171,8 @@ const styles = StyleSheet.create({
         color:'#ffffff',
         fontSize:16,
         fontWeight:'500'
+    },
+    tabTop: {
+      fontSize:14
     }
   });
