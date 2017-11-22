@@ -80,12 +80,15 @@ export default class Found extends Component {
                 <View style={styles.secondaryModal}>
                   <View style={styles.bodyModal}>
                     <Text style={styles.textTitle}>Berikut adalah detail dari item yang anda pilih :</Text>
-                    <Text style={styles.textDescryption}>Nama Barang : </Text>
-                    <Text style={styles.textDescryption}>Deskripsi Barang : </Text>
-                    <Text style={styles.textDescryption}>Lokasi Penemuan : </Text>
-                    <Text style={styles.textDescryption}>Tanggal penemuan : </Text>
-                    <Text style={styles.textDescryption}>Jam Penemuan : </Text>
-                    <Text style={styles.textDescryption}>Identitas Penemu : </Text>
+                    <Text style={styles.textDescryptionModal}>Nama Barang : Namaku bukan namamu</Text>
+                    <Text style={styles.textDescryptionModal}>Deskripsi Barang :Berikut adalah detail dari item yang anda pilih </Text>
+                    <Text style={styles.textDescryptionModal}>Lokasi Penemuan : Berikut adalah detail dari item yang anda pilih</Text>
+                    <Text style={styles.textDescryptionModal}>Tanggal penemuan : 12121112</Text>
+                    <Text style={styles.textDescryptionModal}>Jam Penemuan : 222222</Text>
+                    <Text style={styles.textDescryptionModal}>Identitas Penemu : 1212121212</Text>
+                    <Image
+                      style={styles.imageItemModal}
+                      source={{uri: 'https://i.imgur.com/S2oslJ4.jpg'}} />
                   </View>
                   <View style={styles.buttonRow}>
                     <Button style={styles.buttonClaim} onPress={() => {
@@ -136,6 +139,11 @@ const styles = StyleSheet.create({
     width:80,
     height:80
   },
+  imageItemModal: {
+    width:305,
+    height:150,
+    marginTop:10
+  },
   textTitle: {
     fontSize: 12,
     fontWeight: 'bold', 
@@ -149,6 +157,11 @@ const styles = StyleSheet.create({
     fontFamily:'Arial',
     color:'#767677'
   },
+  textDescryptionModal: {
+    fontSize: 12,
+    fontFamily:'Arial',
+    color:'#767677'
+  },
   textDetails: {
     textAlign: 'right',
     color:'#33abf9',
@@ -157,7 +170,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   mainModal: {
-    marginTop: 22,
+    marginTop:10,
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
@@ -166,14 +179,15 @@ const styles = StyleSheet.create({
   },
   secondaryModal: {
     width: 350,
-    height: 300,
+    height: 385,
     backgroundColor: 'white', 
-    padding: 20,
+    paddingLeft: 20,
+    paddingRight:20,
     borderWidth: 2, 
     borderColor: '#33abf9',
   },
   bodyModal: {
-    height: 200,
+    height: 320,
   },
   buttonClaim: {
     height:30,
