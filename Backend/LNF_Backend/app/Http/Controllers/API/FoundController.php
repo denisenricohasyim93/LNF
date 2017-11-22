@@ -6,18 +6,18 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\API\BaseController;
 use App\User;
-use App\Lost;
+use App\Found;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 
-class LostController extends Controller{
+class FoundController extends Controller{
     protected $baseController;
     public function __construct(BaseController $baseController){
         $this->baseController = $baseController;
     }
 
     public function index(){
-        $data = Lost::all();
+        $data = Found::all();
         return $this->baseController->send_response_api($data, "Data retrieved success");
     }
 
@@ -40,17 +40,17 @@ class LostController extends Controller{
             'lng' => $request->lng,
             'identity' => $request->identity
         );
-        $lost = Lost::create($data);
+        $found = Found::create($data);
 
-        if($lost){
-            return $this->baseController->send_response_api($data, 'Lost uploaded');
+        if($found){
+            return $this->baseController->send_response_api($data, 'Found uploaded');
         }else{
-            return $this->baseController->send_error_api($data, 'Upload Lost failed');
+            return $this->baseController->send_error_api($data, 'Upload Found failed');
         }
     }
 
     public function show($id){
-        $data = Lost::find($id);
+        $data = Found::find($id);
         if($data){
             return $this->baseController->send_response_api($data, 'Data retrieved successfully');
         }else{
@@ -59,17 +59,17 @@ class LostController extends Controller{
     }
 
     // public function delete($id){
-    //     $lost = Lost::find($id);
-    //     $user = $lost->User;
+    //     $found = Found::find($id);
+    //     $user = $found->User;
     //     if($user['id'] == Auth::User()->id){
-    //         $data = $lost->delete();
+    //         $data = $found->delete();
     //         if($data){
     //             return $this->baseController->send_response_api(null, 'Data deleted');
     //         }else{
     //             return $this->baseController->send_error_api($data, 'Data not deleted');
     //         }
     //     }else{
-    //         return $this->baseController->send_error_api($data, 'You cannot delete this lost data');
+    //         return $this->baseController->send_error_api($data, 'You cannot delete this found data');
     //     }
     // }
 }

@@ -25,3 +25,9 @@ $router->post('/register', 'API\UserController@register');
 /* Lost Route */
 $router->get('/lost', 'API\LostController@index');
 $router->get('/show-lost/{id}', 'API\LostController@show');
+$router->post('/create-lost', 'API\LostController@create');
+////////////////////////////////////////////////////////////////////
+/* Found Route */ 
+$router->get('/found', 'API\FoundController@index');
+$router->get('/show-found/{id}', 'API\FoundController@show');
+$router->post('/create-found', 'API\FoundController@create');
