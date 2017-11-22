@@ -21,32 +21,15 @@ class LostController extends Controller{
         return $this->baseController->send_response_api($data, "Data retrieved success");
     }
 
-    public function create(Request $request){
-        $validator = Validator::make($request->all(), [
-            'description' => 'required'
-        ]);
-
-        if($validator->fails()){
-            return $this->baseController->send_error_api($validator->error(), 'Data required');
-        }
-
-        $data = array(
-            'user_id' => Auth::user()->id,
-            'description' => $request->description,
-            'image' => $request->image,
-            'reward' => $request->reward,
-            'location' => $request->location,
-            'lat' => $request->lat,
-            'lng' => $request->lng,
-            'identity' => $request->identity
-        );
-        $lost = Lost::create($data);
-
-        if($lost){
-            return $this->baseController->send_response_api($data, 'Lost uploaded');
-        }else{
-            return $this->baseController->send_error_api($data, 'Upload Lost failed');
-        }
+    public function create(Request $request)
+    {
+      $lost = new LostAds;
+      $category->fill(['name' => $request->input('name')]);
+      if($category->save()){
+        $res['success'] = true;
+        $res['result'] = 'Success add new category!';
+        return response($res);
+      }
     }
 
     public function show($id){
