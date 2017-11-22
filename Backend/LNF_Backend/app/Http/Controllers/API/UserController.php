@@ -25,9 +25,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function login(Request $request){
-        if(['username' => $request->input('username'), 'password' => $request->input('password')]){
+        if(['email' => $request->input('email'), 'password' => $request->input('password')]){
             
-            $user = User::where('username', $request->input('username'))->first();
+            $user = User::where('email', $request->input('email'))->first();
 
             if(Hash::check($request->input('password'), $user->password)){
                 $success['access_token'] =  $user->createToken('access_token')->accessToken;
