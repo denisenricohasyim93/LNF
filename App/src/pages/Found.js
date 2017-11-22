@@ -17,11 +17,13 @@ import {
   View,
   Image,
   Modal,
-  TouchableHighlight
+  TouchableHighlight,
+  Alert
 } from 'react-native';
 var axios = require('axios');
 import FAB from 'react-native-fab';
 import FontAwesome, { Icons } from 'react-native-fontawesome';
+import {Actions} from 'react-native-router-flux';
 export default class Found extends Component {
 
   state = {
@@ -129,6 +131,25 @@ export default class Found extends Component {
                       })
                       .then(function (response) {
                         console.log(response);
+                        if (response.data.status === 'SUCCESS') {
+                          Alert.alert(
+                            'Success Alert',
+                            'Message successed to send',
+                            [
+                              {text: 'OK', onPress: Actions.Found},
+                            ],
+                            { cancelable: false }
+                          )
+                        } else {
+                          Alert.alert(
+                            'Failed Alert',
+                            'Message failed to send',
+                            [
+                              {text: 'OK', onPress: Actions.Found},
+                            ],
+                            { cancelable: false }
+                          )
+                        }
                       })
                       .catch(function (error) {
                         console.log(error);
