@@ -20,6 +20,8 @@ import {
   TouchableHighlight
 } from 'react-native';
 var axios = require('axios');
+import FAB from 'react-native-fab';
+import FontAwesome, { Icons } from 'react-native-fontawesome';
 export default class Found extends Component {
 
   state = {
@@ -90,7 +92,7 @@ export default class Found extends Component {
             </View>
           </Card>
 
-          <View style={{marginTop: 22}}>
+          <View style={{marginTop: 22, height: 150}}>
             <Modal
               animationType="fade"
               transparent={false}
@@ -143,7 +145,8 @@ export default class Found extends Component {
                 </View>  
               </View>
             </Modal>
-          </View>         
+          </View> 
+          <FAB buttonColor="red" iconTextColor="#FFFFFF" onClickAction={() => {console.log("FAB pressed")}} visible={true} iconTextComponent={<FontAwesome>{Icons.pencil}</FontAwesome>} />         
         </Content>
       </Container>
     );
