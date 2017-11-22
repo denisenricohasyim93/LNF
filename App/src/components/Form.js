@@ -159,26 +159,32 @@ const styles = StyleSheet.create({
   inputBox: {
     width:300,
     backgroundColor:'#ffffff',
-    borderRadius: 25,
-    borderWidth: 2,
+    borderRadius: 5,
+    borderWidth: 1,
     borderColor: '#33abf9',
-    paddingHorizontal:16,
-    fontSize:16,
-    color:'#33abf9',
-    marginVertical: 10
+    paddingTop:5,
+    paddingBottom:5,
+    paddingLeft:10,
+    paddingRight:10,
+    fontSize:14,
+    borderColor: '#33abf9',
+    height: 35,
+    marginTop:10
   },
   button: {
     width:300,
     backgroundColor:'#33abf9',
-    borderRadius: 25,
+    borderRadius: 5,
     marginVertical: 10,
-    paddingVertical: 13
+    paddingVertical: 8,
+    height: 35,
   },
   buttonText: {
-    fontSize:16,
-    fontWeight:'500',
+    fontSize:14,
+    fontWeight:'300',
     color:'#ffffff',
-    textAlign:'center'
+    textAlign:'center',
+    fontFamily:'Arial'
   }
   
 });

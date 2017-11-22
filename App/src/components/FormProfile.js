@@ -64,7 +64,7 @@ export default class FormProfile extends Component<{}> {
                 <Text style={styles.buttonText}>Ganti Password</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles.button} onPress={Actions.menu}>
+              <TouchableOpacity style={styles.button} onPress={Actions.login}>
                 <Text style={styles.buttonText}>Keluar</Text>
               </TouchableOpacity>
                      
