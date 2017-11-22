@@ -1,1 +1,1 @@
-![Alt text](/SS/SS1.png?raw=true "Optional Title")
+![Alt text](/App/SS/SS1.png?raw=true "Optional Title")
