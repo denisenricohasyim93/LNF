@@ -1,0 +1,4 @@
+#Wed Nov 22 03:59:10 WIB 2017
+base.0=/Users/A/Desktop/devsummithackaton/LNF/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+renamed.0=classes.dex
+file.0=/Users/A/Desktop/devsummithackaton/LNF/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex
