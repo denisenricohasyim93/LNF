@@ -132,7 +132,7 @@ export default class Form extends Component<{}> {
               value={this.state.password}
               />
             {this.props.type === 'Login' ? (
-              <TouchableOpacity style={styles.button} onPress={this.islogin}>
+              <TouchableOpacity style={styles.button} onPress={Actions.menu}>
                 <Text style={styles.buttonText}>Login</Text>
               </TouchableOpacity>    
             ) : this.props.type === 'Signup' ? (

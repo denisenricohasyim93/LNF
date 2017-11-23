@@ -23,7 +23,7 @@ export default class Profile extends Component<{}> {
 		return(
 			<View style={styles.container}>
 				<Logo/>
-				<Form type="Login"/>
+				<Form type="Profile"/>
 			</View>	
 			)
 	}

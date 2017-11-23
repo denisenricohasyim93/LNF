@@ -11,6 +11,10 @@ import {Actions} from 'react-native-router-flux';
 
 export default class FormProfile extends Component<{}> {
 
+  constructor(props) {
+    super(props);
+  }
+
 	render(){
 		return(
 			<View style={styles.container}>
@@ -48,25 +52,24 @@ export default class FormProfile extends Component<{}> {
               onSubmitEditing={()=> this.password.focus()}
               />
           
-          <Text style={styles.textTitle}>Nama Lengkap</Text>
-          <TextInput style={styles.inputBox} 
-              underlineColorAndroid='rgba(0,0,0,0)' 
-              placeholder="Password"
-              secureTextEntry={true}
-              placeholderTextColor = "#000000"
-              ref={(input) => this.password = input}
-              />
-              <TouchableOpacity style={styles.button} onPress={Actions.menu}>
-                <Text style={styles.buttonText}>Simpan</Text>
-              </TouchableOpacity>
+              {(this.props.type !== 'Lost') ? (
+                <View>
+                  <TouchableOpacity style={styles.button} onPress={Actions.menu}>
+                  <Text style={styles.buttonText}>Simpan</Text>
+                  </TouchableOpacity>
 
-              <TouchableOpacity style={styles.button} onPress={Actions.menu}>
-                <Text style={styles.buttonText}>Ganti Password</Text>
-              </TouchableOpacity>
+                  <TouchableOpacity style={styles.button} onPress={Actions.menu}>
+                    <Text style={styles.buttonText}>Ganti Password</Text>
+                  </TouchableOpacity>
 
-              <TouchableOpacity style={styles.button} onPress={Actions.login}>
-                <Text style={styles.buttonText}>Keluar</Text>
-              </TouchableOpacity>
+                  <TouchableOpacity style={styles.button} onPress={Actions.login}>
+                    <Text style={styles.buttonText}>Keluar</Text>
+                  </TouchableOpacity>
+                </View>
+              ): (
+                <View/>
+              )}
+              
                      
   		</View>
 			)
