@@ -17,12 +17,12 @@ import {
   View,
   Image,
   Modal,
-  TouchableHighlight
+  TouchableHighlight,
 } from 'react-native';
 var axios = require('axios');
 import FAB from 'react-native-fab';
 import FontAwesome, { Icons } from 'react-native-fontawesome';
-import Form from '../components/FormProfile';
+import Form from '../components/FormAddLost';
 export default class Lost extends Component {
 
   state = {
@@ -152,7 +152,7 @@ export default class Lost extends Component {
               </View>
             </Modal>
           </View> 
-          <FAB buttonColor="red" iconTextColor="#FFFFFF" onClickAction={() => {this.setModalVisibleAddLost(!this.state.modalVisibleAddFound)}} visible={true} iconTextComponent={<FontAwesome>{Icons.pencil}</FontAwesome>} />         
+          <FAB buttonColor="#33abf9" iconTextColor="#FFFFFF" onClickAction={() => {this.setModalVisibleAddLost(!this.state.modalVisibleAddFound)}} visible={true} iconTextComponent={<FontAwesome>{Icons.pencil}</FontAwesome>} />         
           <Modal
               animationType="fade"
               transparent={false}
@@ -162,7 +162,7 @@ export default class Lost extends Component {
               transparent
               >
               <View style={styles.mainModal}>
-                <View style={styles.secondaryModal}>
+                <View style={styles.secondaryModalAdd}>
                   <Form type="Lost"/>
                   <View style={styles.buttonRow}>
                     <Button style={styles.buttonExit} 
@@ -244,8 +244,20 @@ const styles = StyleSheet.create({
     borderWidth: 2, 
     borderColor: '#33abf9',
   },
+  secondaryModalAdd: {
+    width: 350,
+    height: 375,
+    backgroundColor: 'white', 
+    paddingLeft: 20,
+    paddingRight:20,
+    borderWidth: 2, 
+    borderColor: '#33abf9',
+  },
   bodyModal: {
     height: 320,
+  },
+  bodyModalAdd: {
+    height: 300,
   },
   buttonClaim: {
     height:30,

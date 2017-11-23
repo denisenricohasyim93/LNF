@@ -18,25 +18,24 @@ import {
   Image,
   Modal,
   TouchableHighlight,
-  Alert
 } from 'react-native';
 var axios = require('axios');
 import FAB from 'react-native-fab';
 import FontAwesome, { Icons } from 'react-native-fontawesome';
-import {Actions} from 'react-native-router-flux';
-export default class Found extends Component {
+import Form from '../components/FormAddFound';
+export default class Founds extends Component {
 
   state = {
     modalVisible: false,
-    modalVisibleAddFound: false
+    modalVisibleAddLost: false
   }
 
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
   }
 
-  setModalVisibleAddFound(visible) {
-    this.setState({modalVisibleAddFound: visible});
+  setModalVisibleAddLost(visible) {
+    this.setState({modalVisibleAddLost: visible});
   }
 
   render() {
@@ -61,7 +60,7 @@ export default class Found extends Component {
             </View>
             <View style={{flex: 3, flexDirection: 'column'}}>
               <Text style={styles.textTitle}>
-                Ditemukan STNK
+                Kehilangan STNK
               </Text>
               <Text style={styles.textDescryption}>
                 Kehilangan STNK atas nama namaku dengan nomor id 09876543212345678
@@ -84,7 +83,7 @@ export default class Found extends Component {
             </View>
             <View style={{flex: 3, flexDirection: 'column'}}>
               <Text style={styles.textTitle}>
-                Ditemukan SIM
+                Kehilangan SIM
               </Text>
               <Text style={styles.textDescryption}>
                 Kehilangan SIM atas nama namaku dengan nomor id 09876543212345678
@@ -117,7 +116,7 @@ export default class Found extends Component {
                     <Text style={styles.textDescryptionModal}>Lokasi Penemuan : Berikut adalah detail dari item yang anda pilih</Text>
                     <Text style={styles.textDescryptionModal}>Tanggal penemuan : 12121112</Text>
                     <Text style={styles.textDescryptionModal}>Jam Penemuan : 222222</Text>
-                    <Text style={styles.textDescryptionModal}>Identitas Penemu : 1212121212</Text>
+                    <Text style={styles.textDescryptionModal}>Identitas Pemilik : 1212121212</Text>
                     <Image
                       style={styles.imageItemModal}
                       source={{uri: 'https://i.imgur.com/S2oslJ4.jpg'}} />
@@ -136,108 +135,44 @@ export default class Found extends Component {
                       })
                       .then(function (response) {
                         console.log(response);
-                        if (response.data.status === 'SUCCESS') {
-                          Alert.alert(
-                            'Success Alert',
-                            'Message successed to send',
-                            [
-                              {text: 'OK', onPress: Actions.Found},
-                            ],
-                            { cancelable: false }
-                          )
-                        } else {
-                          Alert.alert(
-                            'Failed Alert',
-                            'Message failed to send',
-                            [
-                              {text: 'OK', onPress: Actions.Found},
-                            ],
-                            { cancelable: false }
-                          )
-                        }
                       })
                       .catch(function (error) {
                         console.log(error);
                       });
                     }}>
-                      <Text uppercase={false}>Klaim Kehilangan</Text>
+                      <Text uppercase={false}>Klaim Ketemu</Text>
                     </Button>
                     <Button style={styles.buttonExit} 
                       onPress={() => {
                         this.setModalVisible(!this.state.modalVisible)}}>
-                      <Text uppercase={false}>Keluar</Text>
+                      <Text uppercase={false}>Tutup</Text>
                     </Button>
                   </View>
                 </View>  
               </View>
             </Modal>
           </View> 
-          <FAB buttonColor="red" iconTextColor="#FFFFFF" onClickAction={() => {this.setModalVisibleAddFound(!this.state.modalVisibleAddFound)}} visible={true} iconTextComponent={<FontAwesome>{Icons.pencil}</FontAwesome>} />         
+          <FAB buttonColor="#33abf9" iconTextColor="#FFFFFF" onClickAction={() => {this.setModalVisibleAddLost(!this.state.modalVisibleAddFound)}} visible={true} iconTextComponent={<FontAwesome>{Icons.pencil}</FontAwesome>} />         
           <Modal
               animationType="fade"
               transparent={false}
-              visible={this.state.modalVisibleAddFound}
+              visible={this.state.modalVisibleAddLost}
               onRequestClose={() => {
-                this.setModalVisible(!this.state.modalVisibleAddFound)}}
+                this.setModalVisibleAddLost(!this.state.modalVisibleAddLost)}}
               transparent
               >
               <View style={styles.mainModal}>
-                <View style={styles.secondaryModal}>
-                  <View style={styles.bodyModal}>
-                    <Text style={styles.textTitle}>Berikut adalah detail dari item yang anda pilih :</Text>
-                    <Text style={styles.textDescryptionModal}>Nama Barang : Namaku bukan namamu</Text>
-                    <Text style={styles.textDescryptionModal}>Deskripsi Barang :Berikut adalah detail dari item yang anda pilih </Text>
-                    <Text style={styles.textDescryptionModal}>Lokasi Penemuan : Berikut adalah detail dari item yang anda pilih</Text>
-                    <Text style={styles.textDescryptionModal}>Tanggal penemuan : 12121112</Text>
-                    <Text style={styles.textDescryptionModal}>Jam Penemuan : 222222</Text>
-                    <Text style={styles.textDescryptionModal}>Identitas Penemu : 1212121212</Text>
-                    <Image
-                      style={styles.imageItemModal}
-                      source={{uri: 'https://i.imgur.com/S2oslJ4.jpg'}} />
-                  </View>
+                <View style={styles.secondaryModalAdd}>
+                  <Form type="Lost"/>
                   <View style={styles.buttonRow}>
-                    <Button style={styles.buttonClaim} onPress={() => {
-                      axios.post('https://api.mainapi.net/smsnotification/1.0.0/messages', {
-                        msisdn: '082242414959',
-                        content: 'User A menemukan Dompet'
-                      },{
-                        headers:
-                        {
-                          Accept : 'application/json',
-                          Authorization : 'Bearer 2ec2783649188bf7da12f0c9c9c4a5f8'
-                        }
-                      })
-                      .then(function (response) {
-                        console.log(response);
-                        if (response.data.status === 'SUCCESS') {
-                          Alert.alert(
-                            'Success Alert',
-                            'Message successed to send',
-                            [
-                              {text: 'OK', onPress: Actions.Found},
-                            ],
-                            { cancelable: false }
-                          )
-                        } else {
-                          Alert.alert(
-                            'Failed Alert',
-                            'Message failed to send',
-                            [
-                              {text: 'OK', onPress: Actions.Found},
-                            ],
-                            { cancelable: false }
-                          )
-                        }
-                      })
-                      .catch(function (error) {
-                        console.log(error);
-                      });
-                    }}>
-                      <Text uppercase={false}>Klaim Kehilangan</Text>
+                    <Button style={styles.buttonExit} 
+                      onPress={() => {
+                        this.setModalVisibleAddLost(!this.state.modalVisibleAddLost)}}>
+                      <Text uppercase={false}>Simpan</Text>
                     </Button>
                     <Button style={styles.buttonExit} 
                       onPress={() => {
-                        this.setModalVisibleAddFound(!this.state.modalVisibleAddFound)}}>
+                        this.setModalVisibleAddLost(!this.state.modalVisibleAddLost)}}>
                       <Text uppercase={false}>Keluar</Text>
                     </Button>
                   </View>
@@ -309,8 +244,20 @@ const styles = StyleSheet.create({
     borderWidth: 2, 
     borderColor: '#33abf9',
   },
+  secondaryModalAdd: {
+    width: 350,
+    height: 375,
+    backgroundColor: 'white', 
+    paddingLeft: 20,
+    paddingRight:20,
+    borderWidth: 2, 
+    borderColor: '#33abf9',
+  },
   bodyModal: {
     height: 320,
+  },
+  bodyModalAdd: {
+    height: 300,
   },
   buttonClaim: {
     height:30,
