@@ -7,12 +7,26 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-import Logo from '../components/Logo';
-import Form from '../components/Form';
+import Logo from '../../components/Logo';
+import Form from '../../components/Form';
+
+// import redux componens
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import PropTypes from 'prop-types';
 
 import {Actions} from 'react-native-router-flux';
 
+import * as actions from './Actions';
+import * as selectors from './Selectors';
+
 export default class Login extends Component<{}> {
+
+  constructor(props) {
+    super(props);
+    console.log('landing here props', props);
+  }
+
 
 	signup() {
 		Actions.signup()
@@ -34,7 +48,7 @@ export default class Login extends Component<{}> {
 
 const styles = StyleSheet.create({
   container : {
-    backgroundColor:'#ffffff',
+    backgroundColor:'lightblue',
     flex: 1,
     alignItems:'center',
     justifyContent :'center'

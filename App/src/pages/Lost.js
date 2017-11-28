@@ -124,8 +124,8 @@ export default class Lost extends Component {
                   <View style={styles.buttonRow}>
                     <Button style={styles.buttonClaim} onPress={() => {
                       axios.post('https://api.mainapi.net/smsnotification/1.0.0/messages', {
-                        msisdn: '082242414959',
-                        content: 'User A menemukan Dompet'
+                        msisdn: '087893821226',
+                        content: 'User A menemukan Barang A'
                       },{
                         headers:
                         {

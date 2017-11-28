@@ -74,7 +74,7 @@ export default class Form extends Component<{}> {
   // }
 
   islogin = () => {
-    fetch('http://192.168.43.13:8000/login', {
+    fetch('http://192.168.40.85:8000/login', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -87,7 +87,8 @@ export default class Form extends Component<{}> {
     })
     .then((response) => {
       console.log(response);
-      if (response.ok) {
+      if (JSON.parse(response._bodyInit).success) {
+        console.log('landing herre response._bodyInit success', JSON.parse(response._bodyInit).success );
         Alert.alert(
           'Login Alert',
           'You are sucessfully login',
@@ -97,11 +98,49 @@ export default class Form extends Component<{}> {
           { cancelable: false }
         )
       } else {
+        console.log('landing herre response._bodyInit success', JSON.parse(response._bodyInit).success );
         Alert.alert(
           'Login Alert',
           'You are failed to login',
           [
             {text: 'Try Again', onPress: Actions.login},
+          ],
+          { cancelable: false }
+        )
+      }
+    })
+  }
+
+  issignup = () => {
+    fetch('http://192.168.40.85:8000/register', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: 'username',
+        email: this.state.email,
+        password: this.state.password,
+      })
+    })
+    .then((response) => {
+      console.log(response);
+      if (response.ok) {
+        Alert.alert(
+          'Register Alert',
+          'You are sucessfully register',
+          [
+            {text: 'OK', onPress: Actions.menu},
+          ],
+          { cancelable: false }
+        )
+      } else {
+        Alert.alert(
+          'Register Alert',
+          'You are failed to register',
+          [
+            {text: 'Try Again', onPress: Actions.signup},
           ],
           { cancelable: false }
         )
@@ -132,11 +171,11 @@ export default class Form extends Component<{}> {
               value={this.state.password}
               />
             {this.props.type === 'Login' ? (
-              <TouchableOpacity style={styles.button} onPress={Actions.menu}>
+              <TouchableOpacity style={styles.button} onPress={this.islogin}>
                 <Text style={styles.buttonText}>Login</Text>
               </TouchableOpacity>    
             ) : this.props.type === 'Signup' ? (
-              <TouchableOpacity style={styles.button}>
+              <TouchableOpacity style={styles.button} onPress={this.issignup}>
                 <Text style={styles.buttonText}>Sign Up</Text>
               </TouchableOpacity>    
             ) : this.props.type === 'Menu' ? (
